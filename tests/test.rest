@@ -1,0 +1,77 @@
+#  ID   ROLE
+#   0   system
+#   1   user
+#   2   user_admin
+#   3   project_admin AND project_item_admin
+#   4   project_item_admin
+#   5   project_admin
+
+// ------------------------- any authenticated user ------------------- 
+###
+GET http://localhost:3000/private?userid=1
+
+// ------------------------- user -------------------
+### authenticated user landing page, e.g.: dashboard
+GET http://localhost:3000/user_index_read?userid=1
+### profile read
+GET http://localhost:3000/user_profile_read?userid=3
+### profile update
+GET http://localhost:3000/user_profile_update?userid=2
+
+// ------------------------- user_admin -------------------
+#  ID   ROLE
+#   0   system
+#   1   user
+#   2   user_admin
+#   3   project_admin AND project_item_admin
+#   4   project_item_admin
+#   5   project_admin
+### user admin index
+GET http://localhost:3000/user_admin_index_read?userid=2
+### create
+GET http://localhost:3000/user_admin_create?userid=2
+### read
+GET http://localhost:3000/user_admin_read?userid=2
+### update
+GET http://localhost:3000/user_admin_update?userid=2
+### delete
+GET http://localhost:3000/user_admin_delete?userid=2
+// ------------------------- project_admin -------------------
+#  ID   ROLE
+#   0   system
+#   1   user
+#   2   user_admin
+#   3   project_admin AND project_item_admin
+#   4   project_item_admin
+#   5   project_admin
+#   6   my_custom_role  Permission: [project_read],[project_item_read]
+### project index
+GET http://localhost:3000/project_index_read?userid=3
+### create
+GET http://localhost:3000/project_create?userid=3
+### read
+GET http://localhost:3000/project_read?projectid=1&userid=6
+### update
+GET http://localhost:3000/project_update?projectid=1&userid=3
+### delete
+GET http://localhost:3000/project_delete?projectid=1&userid=3
+
+// ------------------------- PROJECT ITEM -------------------
+#  ID   ROLE
+#   0   system
+#   1   user
+#   2   user_admin
+#   3   project_admin AND project_item_admin
+#   4   project_item_admin
+#   5   project_admin
+#   6   my_custom_role  Permission: [project_read],[project_item_read]
+### project_item_index_read
+GET http://localhost:3000/project_item_index_read?userid=4
+###project_item_create 
+GET http://localhost:3000/project_item_create?userid=4
+### read
+GET http://localhost:3000/project_item_read?projectid=1&item=1&userid=6
+### update
+GET http://localhost:3000/project_item_update?projectid=1&userid=4
+### delete
+GET http://localhost:3000/project_item_delete?projectid=1&userid=4
